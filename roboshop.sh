@@ -46,26 +46,18 @@ do
 
     aws route53 change-resource-record-sets \
     --hosted-zone-id $ZONE_ID \
-    --change-batch '
-                {
-                "Comment": "Update CNAME record for test.example.com",
-                "Changes": [
-                    {
-                    "Action": "UPSERT",
-                    "ResourceRecordSet": {
-                        "Name": "'$RECORD_NAME'",
-                        "Type": "CNAME",
-                        "TTL": 1,
-                        "ResourceRecords": [
-                        {
-                            "Value": "'$IP'"
-                        }
-                        ]
-                    }
-                    }
-                ]
-                }
-                '
+    --change-batch '{
+        "Changes": [{
+            "Action": "UPSERT",
+            "ResourceRecordSet": {
+                "Name": "'$RECORD_NAME'",
+                "Type": "A",
+                "TTL": 1,
+                "ResourceRecords": [{"Value": "'$IP'"}]
+            }
+        }]
+    }
+    '
     echo "record updated for $instance"
 
 done
