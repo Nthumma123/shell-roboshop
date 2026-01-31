@@ -6,6 +6,8 @@
 SG_ID="sg-04afc53a2f45b85cc"
 AMI_ID="ami-0220d79f3f480ecf5"
 ZONE_ID="Z0208373RVMHCU0ECIYA"
+#Z0208373RVMHCU0ECIYA
+
 DOMAIN_NAME="neelimadevops.online"
 
 # We are creating Instance and records in Route53
@@ -42,7 +44,7 @@ do
     
     echo "IP Address: $IP"
 
-    aws route53 change-resource-record-sets 
+    aws route53 change-resource-record-sets \
     --hosted-zone-id $ZONE_ID \
     --change-batch '
                 {
