@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER_ID = $(id -u)
+USER_ID=$(id -u)
 LOGS_FOLDER="/var/log/learn-shell"
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 
@@ -17,7 +17,7 @@ fi
 mkdir -p $LOGS_FOLDER
 
 validate() {
-    if [$1 -ne 0 ] ; then
+    if [ $1 -ne 0 ] ; then
         echo -e "$R FAILURE $N" | tee -a $LOGS_FILE
         echo "Refer the log file $LOGS_FILE for more information" 
         exit 1
